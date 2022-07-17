@@ -39,10 +39,10 @@ class Domains:
         if hasattr(self,name):
             return self.generateKws(stock,self.__getattribute__(name))
         else:
-          return ["-" for x in range(10)]
+          return ["-" for x in range(6)]
     @staticmethod
     def generateKws(stock,stocks:Dict[str,Stock])-> List[str]:
         if stock in stocks:
           return stocks[stock].shuffle()
         else:
-          return ["-" for x in range(10)]
+          return ["-" for x in range(6)]

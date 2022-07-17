@@ -3,7 +3,7 @@ from connect import initGspreadClient
 from utils import isUrl,get_tld
 SHEET_URL="https://docs.google.com/spreadsheets/d/1ak_kWaLxTWuQXOasrYTMyJztdlQS2G_YnnYKs471APg/edit#gid=0"
 
-MAX_TO_UPDATE=3
+MAX_TO_UPDATE=5
 class Keywords:
   def __init__(self):
     self.sheet=initGspreadClient().open_by_url(SHEET_URL)
@@ -51,7 +51,7 @@ class Updater(Keywords):
     self._loadData()
     data=self.ws.batch_get(["A2:J"])[0]
     for rowid,row in enumerate(data):
-      if len(row) >=2:
+      if len(row) >=2 and not len(row)>=5:
         if isUrl(row[0]):
           domain=get_tld(row[0]).upper()
           print(rowid)
